@@ -8,6 +8,10 @@ public class Main {
 
     static int x = 15;
 
+    static ScriptEngineManager manager = new ScriptEngineManager();
+    static ScriptEngine engine = manager.getEngineByName("js");
+
+
     final char[] array = {'+', '-', '*', '/'};
     @Test
     public void semne() throws ScriptException {
@@ -27,8 +31,6 @@ public class Main {
         if (k == 0)
         {
             String toEval = "(((1" + prefix.charAt(0) + "2)" + prefix.charAt(1) + "3)" + prefix.charAt(2) + "4)" + prefix.charAt(3) + 5;
-            ScriptEngineManager manager = new ScriptEngineManager();
-            ScriptEngine engine = manager.getEngineByName("js");
             Object result = engine.eval(toEval);
 
             if (result.toString().equals(String.valueOf(x))) {
