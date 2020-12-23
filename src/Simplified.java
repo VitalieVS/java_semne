@@ -9,14 +9,14 @@ public class Simplified {
     public void solve() throws ScriptException {
         char[] combinational = {'+', '-', '*', '/'};
         int x = 15;
+        ScriptEngineManager manager = new ScriptEngineManager();
+        ScriptEngine engine = manager.getEngineByName("js");
 
         for (char a : combinational) {
             for (char b : combinational) {
                 for (char c : combinational) {
                     for (char d : combinational) {
                         String toEval = "(((1" + a + "2)" + b + "3)" + c + "4)" + d + 5;
-                        ScriptEngineManager manager = new ScriptEngineManager();
-                        ScriptEngine engine = manager.getEngineByName("js");
                         Object result = engine.eval(toEval);
 
                         if (result.toString().equals(String.valueOf(x))) {
